@@ -1,0 +1,10 @@
+data:
+  path: "data/data.csv"
+
+template:
+  path: "templates/email_template.html"
+
+mail:
+  from: "abhishek.varghese@syndigo.com"
+  subject: "[IMMEDIATE ACTION NEEDED] - Inaction will lead to locking of SAP IDs of your team"
+  attachments_path: "attachments/"

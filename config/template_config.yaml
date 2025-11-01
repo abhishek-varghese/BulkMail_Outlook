@@ -1,0 +1,15 @@
+placeholders:
+  approver_table:
+    type: "table"
+    group_by: ["ManagerName"]
+    agg:
+      EmployeeName: "count"
+    columns: ["ManagerName", "EmployeeName"]
+
+  manager_summary:
+    type: "list"
+    group_by: ["ManagerName"]
+    agg:
+      EmployeeName: "count"
+    text_format: "{ManagerName} manages {EmployeeName} employees"
+    format: "ul"
