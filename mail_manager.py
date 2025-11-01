@@ -11,13 +11,12 @@ class MailManager:
         grouped_df = df.groupby(data_group_by)
         print(grouped_df)
 
-        # Step 4: Loop through data and send mails
         for group, row in grouped_df:
             print("printing html body")
             html_body = self.template_renderer.render(row)  # render once from grouped data
             print(html_body)
 
-            mail_to = str(group)
+            mail_to = group[0]
             mail_cc = ",".join(row["CCemail"].dropna().astype(str).unique())
             self.email_sender.send_mail(to=mail_to, cc=mail_cc, body=html_body)
             # sender.send_mail(to="abhishek.varghese@syndigo.com", cc="", body=html_body)

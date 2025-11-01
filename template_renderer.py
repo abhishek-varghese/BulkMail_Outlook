@@ -24,7 +24,7 @@ class TemplateRenderer:
                 content = str(df[ph].iloc[0])
                 # series to join to list.
                 # content = ", ".join(df[ph].dropna().astype(str).unique())
-            elif ph in self.template_config.Keys:
+            elif ph in self.template_config["placeholders"]:
                 content = self._generate_content(df, conf)
             else:
                 print(f"⚠️ No config found for placeholder: {ph}")

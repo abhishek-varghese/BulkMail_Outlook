@@ -4,9 +4,9 @@ placeholders:
   approver_table:
     type: "table"
     group_by: ["Email"]
-    agg:
-      EmployeeName: "count"
-    columns: ["ManagerName", "EmployeeName"]
+#    agg:
+#      EmployeeName: "count"
+    columns: ["reqnum", "User", "approver"]
 
   manager_summary:
     type: "list"
