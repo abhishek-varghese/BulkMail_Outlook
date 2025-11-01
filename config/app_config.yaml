@@ -1,8 +1,8 @@
 data:
   path: "data/data.csv"
 
-template:
-  path: "templates/email_template.html"
+email_template:
+  path: "email_templates/email_template.html"
 
 mail:
   from: "abhishek.varghese@syndigo.com"

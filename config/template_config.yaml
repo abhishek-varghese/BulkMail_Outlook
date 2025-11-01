@@ -1,7 +1,9 @@
+data_group_by: ["Email"]
+
 placeholders:
   approver_table:
     type: "table"
-    group_by: ["ManagerName"]
+    group_by: ["Email"]
     agg:
       EmployeeName: "count"
     columns: ["ManagerName", "EmployeeName"]

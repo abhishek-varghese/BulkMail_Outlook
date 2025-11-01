@@ -4,7 +4,9 @@ import win32com.client
 
 class EmailSender:
     def __init__(self, from_address, subject, attachments_path=""):
+        print("Initializing EmailSender")
         self.outlook = win32com.client.Dispatch("Outlook.Application")
+        print("Outlook.Application is ready")
         self.from_address = from_address
         self.subject = subject
         self.attachments_path = attachments_path

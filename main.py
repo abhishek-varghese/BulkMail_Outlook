@@ -1,5 +1,7 @@
 import pandas as pd
 import yaml
+
+from mail_manager import MailManager
 from template_renderer import TemplateRenderer
 from email_sender import EmailSender
 
@@ -10,7 +12,7 @@ def main():
         config = yaml.safe_load(f)
 
     data_path = config["data"]["path"]
-    template_path = config["template"]["path"]
+    email_template = config["email_template"]["path"]
     template_config = "config/template_config.yaml"
     mail_config = config["mail"]
 
@@ -22,7 +24,7 @@ def main():
 
 
     # Step 2: Render email body (with placeholder tables/lists)
-    renderer = TemplateRenderer(template_path, template_config)
+    renderer = TemplateRenderer(email_template, template_config)
 
     # Step 3: Create email sender
     sender = EmailSender(
@@ -31,14 +33,13 @@ def main():
         attachments_path=mail_config.get("attachments_path", "")
     )
 
-    # Step 4: Loop through data and send mails
-    for _, row in df.iterrows():
-        html_body = renderer.render(df)  # render once from grouped data
-        # sender.send_mail(to=row["Email"], cc=row.get("CCemail", ""), body=html_body)
-        sender.send_mail(to="abhishek.varghese@syndigo.com", cc="", body=html_body)
+    mail_manager = MailManager(
+        email_sender=sender,
+        template_renderer=renderer,
+        template_config=template_config
+    )
 
-    print("✅ All emails processed successfully.")
-
+    mail_manager.start(df)
 
 if __name__ == "__main__":
     main()
