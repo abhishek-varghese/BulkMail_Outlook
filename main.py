@@ -20,6 +20,7 @@ def main():
     else:
         df = pd.read_csv(data_path)
 
+
     # Step 2: Render email body (with placeholder tables/lists)
     renderer = TemplateRenderer(template_path, template_config)
 

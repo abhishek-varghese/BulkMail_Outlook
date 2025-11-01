@@ -4,11 +4,6 @@ from html_helpers import build_html_table, build_html_list
 
 
 class TemplateRenderer:
-    """
-    Replaces placeholders in HTML templates based on YAML configuration.
-    Each placeholder corresponds to either a grouped table or list.
-    """
-
     def __init__(self, template_path, config_path):
         with open(template_path, "r", encoding="utf-8") as f:
             self.template = f.read()
